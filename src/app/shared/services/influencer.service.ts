@@ -17,4 +17,16 @@ export class InfluencerService {
       .get(INFLUENCER_API)
       .map((response: Response) => response.json());
   }
+
+  updateInfluencer(influencer: Influencer): Observable<Influencer> {
+    return this.http
+      .put(`${INFLUENCER_API}/${influencer.id}`, influencer)
+      .map((response: Response) => response.json());
+  }
+
+  removeInfluencer(influencer: Influencer): Observable<Influencer> {
+    return this.http
+      .delete(`${INFLUENCER_API}/${influencer.id}`)
+      .map((response: Response) => response.json());
+  }
 }
