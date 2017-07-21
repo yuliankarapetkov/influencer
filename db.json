@@ -1,0 +1,34 @@
+{
+    "Influencers": [
+        {
+            "id": 1,
+            "name": "Donald Trump",
+            "category": "Retard",
+            "location": "United States"
+        },
+        {
+            "id": 2,
+            "name": "Boyko Borisov",
+            "category": "Retard",
+            "location": "Bulgaria"
+        },
+        {
+            "id": 3,
+            "name": "Dalai Lama",
+            "category": "Spiritual Guru",
+            "location": "Tibet"
+        },
+        {
+            "id": 4,
+            "name": "Prince EA",
+            "category": "Online Philosopher",
+            "location": "United States"
+        },
+        {
+            "id": 5,
+            "name": "Edward Snowden",
+            "category": "Whistleblower",
+            "location": "Russia"
+        }
+    ]
+}
