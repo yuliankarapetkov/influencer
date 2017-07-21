@@ -32,17 +32,25 @@ export class InfluencerDashboardComponent implements OnInit {
     }
 
     handleEdit(event: Influencer) {
-        this.influencers = this.influencers.map((influencer: Influencer) => {
-            if (influencer.id === event.id) {
-                influencer = Object.assign({}, influencer, event);
-            }
-            return influencer;
-        });
+        this.influencerService
+            .updateInfluencer(event)
+            .subscribe((data: Influencer) => {
+                this.influencers = this.influencers.map((influencer: Influencer) => {
+                    if (influencer.id === event.id) {
+                        influencer = Object.assign({}, influencer, event);
+                    }
+                    return influencer;
+                });
+            });
     }
 
     handleRemove(event: Influencer) {
-        this.influencers = this.influencers.filter((influencer: Influencer) => {
-            return influencer.id !== event.id;
-        });
+        this.influencerService
+            .removeInfluencer(event)
+            .subscribe((data: Influencer) => {
+                this.influencers = this.influencers.filter((influencer: Influencer) => {
+                    return influencer.id !== event.id;
+                });
+            });
     }
 }
