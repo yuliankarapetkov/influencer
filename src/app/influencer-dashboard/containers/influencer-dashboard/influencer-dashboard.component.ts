@@ -21,7 +21,7 @@ import { CategoryService } from '../../../shared/services/category.service';
             <influencer-item 
                 *ngFor="let influencer of influencers" 
                 [item]="influencer"
-                (edit)="handleEdit($event)"
+                (update)="handleUpdate($event)"
                 (remove)="handleRemove($event)">
             </influencer-item>
         </div>
@@ -56,7 +56,7 @@ export class InfluencerDashboardComponent implements OnInit {
             });
     }
 
-    handleEdit(event: Influencer) {
+    handleUpdate(event: Influencer) {
         this.influencerService
             .updateInfluencer(event)
             .subscribe((data: Influencer) => {

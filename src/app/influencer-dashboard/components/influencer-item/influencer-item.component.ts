@@ -7,12 +7,13 @@ import { Influencer } from '../../../shared/models/influencer.interface';
     styleUrls: ['influencer-item.component.scss'],
     template: `
         <div class="influencer-item">
-            <div *ngIf="editing">
+            <div [hidden]="!editing">
                 <input 
                     type="text" 
-                    #name
-                    [value]="item?.name"
-                    (input)="onNameChange(name.value)" />
+                    name="name"
+                    #name="ngModel"
+                    required
+                    [(ngModel)]="item.name" />
             </div>
             <div *ngIf="!editing">
                 {{ item?.name }}
@@ -23,7 +24,7 @@ import { Influencer } from '../../../shared/models/influencer.interface';
             <div>
                 Location: {{ item?.location }}
             </div>
-            <button (click)="toggleEdit()">
+            <button [disabled]="editing && name.errors" (click)="toggleEdit()">
                 {{ editing ? 'Done' : 'Edit' }}
             </button>
             <button (click)="onRemove()">
@@ -37,7 +38,7 @@ export class InfluencerItemComponent implements OnChanges {
     item: Influencer;
 
     @Output()
-    edit: EventEmitter<Influencer>;
+    update: EventEmitter<Influencer>;
 
     @Output()
     remove: EventEmitter<Influencer>;
@@ -46,7 +47,7 @@ export class InfluencerItemComponent implements OnChanges {
 
     constructor() {
         this.editing = false;
-        this.edit = new EventEmitter<Influencer>();
+        this.update = new EventEmitter<Influencer>();
         this.remove = new EventEmitter<Influencer>();
     }
 
@@ -56,17 +57,13 @@ export class InfluencerItemComponent implements OnChanges {
         }
     }
 
-    onNameChange(value) {
-        this.item.name = value;
-    }
-
     onRemove() {
         this.remove.emit(this.item);
     }
 
     toggleEdit() {
         if (this.editing) {
-            this.edit.emit(this.item);
+            this.update.emit(this.item);
         }
         this.editing = !this.editing;
     }
