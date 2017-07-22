@@ -14,7 +14,7 @@ export class InfluencerService {
 
   getInfluencers(): Observable<Influencer[]> {
     return this.http
-      .get(INFLUENCER_API)
+      .get(`${INFLUENCER_API}?_expand=category`)
       .map((response: Response) => response.json());
   }
 

@@ -1,6 +1,9 @@
+import { Category } from './category.interface';
+
 export interface Influencer {
-    id: number;
+    id?: number;
     name: string;
-    location: string;
-    category: string;
+    location: string | null;
+    categoryId: number;
+    category?: Category;
 }

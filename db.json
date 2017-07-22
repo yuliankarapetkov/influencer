@@ -1,34 +1,52 @@
 {
-    "Influencers": [
-        {
-            "id": 1,
-            "name": "Donald Trump",
-            "category": "Retard",
-            "location": "United States"
-        },
-        {
-            "id": 2,
-            "name": "Boyko Borisov",
-            "category": "Retard",
-            "location": "Bulgaria"
-        },
-        {
-            "id": 3,
-            "name": "Dalai Lama",
-            "category": "Spiritual Guru",
-            "location": "Tibet"
-        },
-        {
-            "id": 4,
-            "name": "Prince EA",
-            "category": "Online Philosopher",
-            "location": "United States"
-        },
-        {
-            "id": 5,
-            "name": "Edward Snowden",
-            "category": "Whistleblower",
-            "location": "Russia"
-        }
-    ]
+  "influencers": [
+    {
+      "id": 1,
+      "name": "Donald Trump",
+      "categoryId": 1,
+      "location": "United States"
+    },
+    {
+      "id": 2,
+      "name": "Boyko Borisov",
+      "categoryId": 1,
+      "location": "Bulgaria"
+    },
+    {
+      "id": 3,
+      "name": "Dalai Lama",
+      "categoryId": 2,
+      "location": "Tibet"
+    },
+    {
+      "id": 4,
+      "name": "Prince EA",
+      "categoryId": 3,
+      "location": "United States"
+    },
+    {
+      "id": 5,
+      "name": "Edward Snowden",
+      "categoryId": 4,
+      "location": "Russia"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Retard"
+    },
+    {
+      "id": 2,
+      "name": "Spiritual Guru"
+    },
+    {
+      "id": 3,
+      "name": "Online Philosopher"
+    },
+    {
+      "id": 4,
+      "name": "Whistleblower"
+    }
+  ]
 }

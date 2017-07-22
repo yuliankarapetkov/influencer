@@ -18,7 +18,7 @@ import { Influencer } from '../../../shared/models/influencer.interface';
                 {{ item?.name }}
             </div>
             <div>
-                Category: {{ item?.category }}
+                Category: {{ item?.category.name }}
             </div>
             <div>
                 Location: {{ item?.location }}
