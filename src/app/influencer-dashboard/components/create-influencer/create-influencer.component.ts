@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Influencer } from '../../../shared/models/influencer.interface';
+import { Category } from '../../../shared/models/category.interface';
 
 @Component({
     selector: 'create-influencer',
@@ -18,12 +19,16 @@ import { Influencer } from '../../../shared/models/influencer.interface';
             </div>
             <div>
                 Category:
-                <input 
-                    type="text" 
-                    name="category"
+                <select
+                    name="categoryId"
                     required
-                    #category="ngModel"
-                    [ngModel]="item?.category" />
+                    [ngModel]="item?.categoryId">
+                    <option 
+                        *ngFor="let category of categories"
+                        [value]="category.id">
+                        {{ category.name }}
+                    </option>
+                </select>
             </div>
             <div>
                 Location: 
@@ -40,6 +45,9 @@ import { Influencer } from '../../../shared/models/influencer.interface';
     `
 })
 export class CreateInfluencerComponent {
+    @Input()
+    categories: Category[];
+
     item: Influencer;
 
     @Output()

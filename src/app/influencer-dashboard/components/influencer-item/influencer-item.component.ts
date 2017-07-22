@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 import { Influencer } from '../../../shared/models/influencer.interface';
 
@@ -32,7 +32,7 @@ import { Influencer } from '../../../shared/models/influencer.interface';
         </div>
     `
 })
-export class InfluencerItemComponent implements OnChanges, OnInit {
+export class InfluencerItemComponent implements OnChanges {
     @Input()
     item: Influencer;
 
@@ -54,10 +54,6 @@ export class InfluencerItemComponent implements OnChanges, OnInit {
         if (changes.item) {
             this.item = Object.assign({}, changes.item.currentValue);
         }
-    }
-
-    ngOnInit() {
-
     }
 
     onNameChange(value) {

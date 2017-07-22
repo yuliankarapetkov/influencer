@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Influencer } from '../../../shared/models/influencer.interface';
+import { Category } from '../../../shared/models/category.interface';
 
 import { InfluencerService } from '../../../shared/services/influencer.service';
+import { CategoryService } from '../../../shared/services/category.service';
 
 @Component({
     selector: 'influencer-dashboard',
@@ -11,7 +13,10 @@ import { InfluencerService } from '../../../shared/services/influencer.service';
         <div>
             <h1>Dashboard</h1>
             <h2>Create</h2>
-            <create-influencer (create)="handleCreate($event)"></create-influencer>
+            <create-influencer 
+                (create)="handleCreate($event)"
+                [categories]="categories">
+            </create-influencer>
             <h2>Influencers</h2>
             <influencer-item 
                 *ngFor="let influencer of influencers" 
@@ -24,21 +29,30 @@ import { InfluencerService } from '../../../shared/services/influencer.service';
 })
 export class InfluencerDashboardComponent implements OnInit {
     influencers: Influencer[];
+    categories: Category[];
 
-    constructor(private influencerService: InfluencerService) {
+    constructor(
+        private influencerService: InfluencerService,
+        private categoryService: CategoryService
+        ) {
     }
 
     ngOnInit() {
         this.influencerService
             .getInfluencers()
             .subscribe((data: Influencer[]) => this.influencers = data);
+        this.categoryService
+            .getCategories()
+            .subscribe((data: Category[]) => this.categories = data);
     }
 
     handleCreate(event: Influencer) {
         this.influencerService
             .createInfluencer(event)
             .subscribe((data: Influencer) => {
-                this.influencers = [ ...this.influencers, data ];
+                // This is needed, because the server returns an object without a category object inside it.
+                let category = this.categories.find((category: Category) => category.id === +data.categoryId);
+                this.influencers = [ ...this.influencers, {...data, category: category} ];
             });
     }
 
