@@ -9,7 +9,10 @@ import { InfluencerService } from '../../../shared/services/influencer.service';
     styleUrls: [],
     template: `
         <div>
-            <h1>Influencer Dashboard</h1>
+            <h1>Dashboard</h1>
+            <h2>Create</h2>
+            <create-influencer (create)="handleCreate($event)"></create-influencer>
+            <h2>Influencers</h2>
             <influencer-item 
                 *ngFor="let influencer of influencers" 
                 [item]="influencer"
@@ -29,6 +32,10 @@ export class InfluencerDashboardComponent implements OnInit {
         this.influencerService
             .getInfluencers()
             .subscribe((data: Influencer[]) => this.influencers = data);
+    }
+
+    handleCreate(event: Influencer) {
+        console.log(event);
     }
 
     handleEdit(event: Influencer) {
