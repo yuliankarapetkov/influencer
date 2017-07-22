@@ -35,7 +35,11 @@ export class InfluencerDashboardComponent implements OnInit {
     }
 
     handleCreate(event: Influencer) {
-        console.log(event);
+        this.influencerService
+            .createInfluencer(event)
+            .subscribe((data: Influencer) => {
+                this.influencers = [ ...this.influencers, data ];
+            });
     }
 
     handleEdit(event: Influencer) {

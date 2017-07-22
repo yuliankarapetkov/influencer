@@ -8,6 +8,7 @@ import { Influencer } from '../../../shared/models/influencer.interface';
     template: `
         <form (ngSubmit)="onCreate(form.value, form.valid)" #form="ngForm" novalidate>
             <div>
+                Name: 
                 <input 
                     type="text" 
                     name="name"
@@ -16,6 +17,7 @@ import { Influencer } from '../../../shared/models/influencer.interface';
                     [ngModel]="item?.name" />
             </div>
             <div>
+                Category:
                 <input 
                     type="text" 
                     name="category"
@@ -24,6 +26,7 @@ import { Influencer } from '../../../shared/models/influencer.interface';
                     [ngModel]="item?.category" />
             </div>
             <div>
+                Location: 
                 <input 
                     type="text" 
                     name="location"

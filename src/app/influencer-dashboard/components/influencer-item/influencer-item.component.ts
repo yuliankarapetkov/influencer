@@ -11,17 +11,17 @@ import { Influencer } from '../../../shared/models/influencer.interface';
                 <input 
                     type="text" 
                     #name
-                    [value]="item.name"
+                    [value]="item?.name"
                     (input)="onNameChange(name.value)" />
             </div>
             <div *ngIf="!editing">
-                {{ item.name }}
+                {{ item?.name }}
             </div>
             <div>
-                Category: {{ item.category }}
+                Category: {{ item?.category }}
             </div>
             <div>
-                Location: {{ item.location }}
+                Location: {{ item?.location }}
             </div>
             <button (click)="toggleEdit()">
                 {{ editing ? 'Done' : 'Edit' }}
