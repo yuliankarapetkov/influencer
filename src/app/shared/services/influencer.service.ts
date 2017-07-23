@@ -12,6 +12,12 @@ const INFLUENCER_API: string = 'http://localhost:3000/influencers';
 export class InfluencerService {
   constructor(private http: Http) { }
 
+  getInfluencer(id: number): Observable<Influencer> {
+    return this.http
+      .get(`${INFLUENCER_API}/${id}?_expand=category`)
+      .map((response: Response) => response.json());
+  }
+
   getInfluencers(): Observable<Influencer[]> {
     return this.http
       .get(`${INFLUENCER_API}?_expand=category`)

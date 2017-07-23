@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Influencer } from '../../../shared/models/influencer.interface';
 import { Category } from '../../../shared/models/category.interface';
@@ -22,7 +23,8 @@ import { CategoryService } from '../../../shared/services/category.service';
                 *ngFor="let influencer of influencers" 
                 [item]="influencer"
                 (update)="handleUpdate($event)"
-                (remove)="handleRemove($event)">
+                (remove)="handleRemove($event)"
+                (view)="handleView($event)">
             </influencer-item>
         </div>
     `
@@ -32,6 +34,7 @@ export class InfluencerDashboardComponent implements OnInit {
     categories: Category[];
 
     constructor(
+        private router: Router,
         private influencerService: InfluencerService,
         private categoryService: CategoryService
         ) {
@@ -77,5 +80,9 @@ export class InfluencerDashboardComponent implements OnInit {
                     return influencer.id !== event.id;
                 });
             });
+    }
+
+    handleView(event: Influencer) {
+        this.router.navigate(['/influencers', event.id]);
     }
 }

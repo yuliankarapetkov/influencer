@@ -30,6 +30,9 @@ import { Influencer } from '../../../shared/models/influencer.interface';
             <button (click)="onRemove()">
                 Remove
             </button>
+            <button (click)="onView()">
+                View
+            </button>
         </div>
     `
 })
@@ -43,12 +46,16 @@ export class InfluencerItemComponent implements OnChanges {
     @Output()
     remove: EventEmitter<Influencer>;
 
+    @Output()
+    view: EventEmitter<Influencer>;
+
     editing: boolean;
 
     constructor() {
         this.editing = false;
         this.update = new EventEmitter<Influencer>();
         this.remove = new EventEmitter<Influencer>();
+        this.view = new EventEmitter<Influencer>();
     }
 
     ngOnChanges(changes) {
@@ -59,6 +66,10 @@ export class InfluencerItemComponent implements OnChanges {
 
     onRemove() {
         this.remove.emit(this.item);
+    }
+
+    onView() {
+        this.view.emit(this.item);
     }
 
     toggleEdit() {

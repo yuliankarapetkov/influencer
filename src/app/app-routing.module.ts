@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { InfluencerDashboardComponent } from './influencer-dashboard/containers/influencer-dashboard/influencer-dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard',  component: InfluencerDashboardComponent }
+  { path: '', redirectTo: '/influencers', pathMatch: 'full' },
+  { path: 'influencers',  component: InfluencerDashboardComponent }
 ];
 
 @NgModule({
